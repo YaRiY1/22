@@ -1,0 +1,16 @@
+import telebot
+
+token = "1748850816:AAFxvwIMQBRNBhpR1WchajDbO_J88yCQww0"
+
+bot = telebot.TeleBot(token)
+
+@bot.message_handler(content_types=["text"])
+def echo(message):
+    word ="Ярослав"
+    if word in str(message):
+        bot.send_message(message.chat.id, "Ба! Знакомые все лица!")
+    else:
+        bot.send_message(message.chat.id, message.text)
+
+
+bot.polling(none_stop=True)
